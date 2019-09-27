@@ -1,0 +1,28 @@
+{
+  "title": "Location",
+  "type": "object",
+  "description": "Adddress item",
+  "properties": {
+    "address": {
+      "type": "string",
+      "maxLength": 120
+    },
+    "city": {
+      "type": "string",
+      "maxLength": 60
+    },
+    "country": {
+      "type": "string",
+      "maxLength": 60
+    }
+  },
+  "required": [
+    "address",
+    "city",
+    "country"
+  ],
+  "example": {
+    "summary": "Location response",
+    "$ref": "../examples/location.v1.json"
+  },
+}

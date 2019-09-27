@@ -1,0 +1,54 @@
+{
+  "title": "Event",
+  "type": "object",
+  "description": "Event item",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Event id"
+    },
+    "name": {
+      "type": "string",
+      "description": "Event name",
+      "minLength": 2,
+      "maxLength": 120
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Event start datetime"
+    },
+    "price": {
+      "type": "number",
+      "description": "Event price",
+      "format": "double",
+      "maximum": 999.99
+    },
+    "imageUrl": {
+      "type": "string",
+      "maxLength": 255,
+      "description": "Event URL picture"
+    },
+    "location": {
+      "$ref": "./location.v1.json"
+    },
+    "sessions": {
+      "type": "array",
+      "description": "Event sessions address",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "./session.v1.json"
+      }
+    }
+  },
+  "example": {
+    "summary": "Event response",
+    "$ref": "../examples/event.v1.json"
+  },
+  "required": [
+    "id",
+    "name",
+    "startDate"
+  ]
+}

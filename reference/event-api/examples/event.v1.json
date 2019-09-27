@@ -1,0 +1,71 @@
+{
+  "id": "5ab39626-7121-417c-8c91-3c2eaa39fef6",
+  "name": "Angular Connect",
+  "startDate": "2036-09-26T10:00:00Z",
+  "price": 599.99,
+  "imageUrl": "/assets/images/angularconnect-shield.png",
+  "location": {
+    "address": "1057 DT",
+    "city": "London",
+    "country": "England"
+  },
+  "sessions": [
+    {
+      "id": "eb3a377c-3742-43ac-8d87-35534de2db8f",
+      "name": "Using Angular 4 Pipes",
+      "description": "Learn all about the new pipes in Angular 4, both how to write them, and how to get the new AI CLI to write them for you. Given by the famous PBD, president of Angular University (formerly Oxford University)",
+      "presenter": "Peter Bacon Darwin",
+      "duration": "01:00",
+      "level": "BEGINNER",
+      "voters": [
+        "bradgreen",
+        "igorminar",
+        "martinfowler"
+      ]
+    },
+    {
+      "id": "c4703651-2d70-4086-b47c-06bb83e15b5a",
+      "name": "Getting the most out of your dev team",
+      "presenter": "Jeff Cross",
+      "duration": "01:00",
+      "level": "INTERMEDIATE",
+      "description": "We all know that our dev teams work hard, but with the right management they can be even more productive, without overworking them. In this session I'll show you how to get the best results from the talent you already have on staff.",
+      "voters": [
+        "johnpapa",
+        "bradgreen",
+        "igorminar",
+        "martinfowler"
+      ]
+    },
+    {
+      "id": "87dd2d04-0de5-4a2b-8c1b-e41a682f617a",
+      "name": "Angular 4 Performance Metrics",
+      "presenter": "Rob Wormald",
+      "duration": "02:30",
+      "level": "ADVANCED",
+      "description": "Angular 4 Performance is hot. In this session, we'll see how Angular gets such great performance by preloading data on your users devices before they even hit your site using the new predictive algorithms and thought reading software built into Angular 4.",
+      "voters": []
+    },
+    {
+      "id": "495755c8-e695-40b6-9e59-e9166d24384d",
+      "name": "Angular 5 Look Ahead",
+      "presenter": "Brad Green",
+      "duration": "02:00",
+      "level": "ADVANCED",
+      "description": "Even though Angular 5 is still 6 years away, we all want to know all about it so that we can spend endless hours in meetings debating if we should use Angular 4 or not. This talk will look at Angular 6 even though no code has yet been written for it. We'll look at what it might do, and how to convince your manager to hold off on any new apps until it's released",
+      "voters": []
+    },
+    {
+      "id": "d379ed19-3859-472f-8cae-2b51154b16ad",
+      "name": "Basics of Angular 4",
+      "presenter": "John Papa",
+      "duration": "02:00",
+      "level": "ADVANCED",
+      "description": "It's time to learn the basics of Angular 4. This talk will give you everything you need to know about Angular 4 to get started with it today and be building UI's for your self driving cars and butler-bots in no time.",
+      "voters": [
+        "bradgreen",
+        "igorminar"
+      ]
+    }
+  ]
+}
