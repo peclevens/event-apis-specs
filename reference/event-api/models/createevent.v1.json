@@ -45,5 +45,17 @@
   "required": [
     "startDate",
     "name"
+  ],
+  "anyOf": [
+    {
+      "required": [
+        "imageUrl"
+      ]
+    },
+    {
+      "required": [
+        "location"
+      ]
+    }
   ]
 }
