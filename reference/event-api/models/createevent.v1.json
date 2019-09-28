@@ -3,7 +3,7 @@
   "type": "object",
   "example": {
     "summary": "Event creation request",
-    "$ref": "../examples/event.v1.json"
+    "$ref": "../examples/create-event.v1.json"
   },
   "description": "Event item",
   "properties": {
