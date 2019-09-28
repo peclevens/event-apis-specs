@@ -25,9 +25,9 @@ paths:
                 items:
                   $ref: ./models/event.v1.json
           headers: {}
-      description: List all event
       operationId: getAllEvents
       tags: []
+      summary: List all event
     post:
       responses:
         '201':
@@ -36,7 +36,6 @@ paths:
             application/json:
               schema:
                 $ref: ./models/id.v1.json
-      description: Create new event
       tags: []
       operationId: createEvent
       requestBody:
@@ -45,13 +44,14 @@ paths:
             schema:
               $ref: ./models/createevent.v1.json
         description: Event creation request
+      summary: Create new event
     delete:
       responses:
         '204':
           description: No Content
       operationId: deleteAllEvent
       tags: []
-      description: Delete all events
+      summary: Delete all events
     parameters: []
   '/events/{id}':
     parameters:
@@ -71,14 +71,14 @@ paths:
               schema:
                 $ref: ./models/createevent.v1.json
       operationId: getEventById
-      description: Get event by id
+      summary: Get event by id
     delete:
       responses:
         '204':
           description: No Content
-      description: Delete event by id
       tags: []
       operationId: deleteEventById
+      summary: Delete event by id
     put:
       responses:
         '200':
@@ -87,7 +87,6 @@ paths:
             application/json:
               schema:
                 $ref: ./models/event.v1.json
-      description: Update event
       operationId: updateEventById
       tags: []
       requestBody:
@@ -95,7 +94,7 @@ paths:
           application/json:
             schema:
               $ref: ./models/event.v1.json
-        description: ''
+      summary: Update event
   '/events/{id}/sessions':
     parameters:
       - name: id
@@ -115,15 +114,15 @@ paths:
                 type: array
                 items:
                   $ref: ./models/session.v1.json
-      description: Get all sessions for a particular event
       operationId: getSessionsByEventId
+      summary: Get all sessions for a particular event
     delete:
       responses:
         '204':
           description: No Content
-      description: Delete all sessions for a particular event
       operationId: deleteAllSessionsByEventId
       tags: []
+      summary: Delete all sessions for a particular event
     post:
       responses:
         '200':
@@ -132,7 +131,6 @@ paths:
             application/json:
               schema:
                 $ref: ./models/id.v1.json
-      description: Create a session for a particular event
       tags: []
       operationId: createSession
       requestBody:
@@ -140,6 +138,7 @@ paths:
           application/json:
             schema:
               $ref: ./models/createsession.v1.json
+      summary: Create a session for a particular event
   '/events/sessions/{id}':
     parameters:
       - name: id
@@ -157,8 +156,8 @@ paths:
             application/json:
               schema:
                 $ref: ./models/session.v1.json
-      description: Get session by id
       operationId: getSessionById
+      summary: Get session by id
     put:
       responses:
         '200':
@@ -167,7 +166,6 @@ paths:
             application/json:
               schema:
                 $ref: ./models/session.v1.json
-      description: Update a session
       operationId: updateSessionById
       tags: []
       requestBody:
@@ -175,10 +173,11 @@ paths:
           application/json:
             schema:
               $ref: ./models/session.v1.json
+      summary: Update a session
     delete:
       responses:
         '204':
           description: No Content
-      description: Delete session by id
       operationId: deleteSessionById
       tags: []
+      summary: Delete session by id
