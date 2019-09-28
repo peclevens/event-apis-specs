@@ -20,7 +20,7 @@
     },
     "imageUrl": {
       "type": "string",
-      "maxLength": 255,
+      "maxLength": 2048,
       "description": "Event URL picture"
     },
     "price": {
