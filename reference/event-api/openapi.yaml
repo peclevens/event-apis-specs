@@ -1,0 +1,184 @@
+openapi: 3.0.0
+info:
+  title: event-api
+  version: '1.0'
+  description: Event management API
+  contact:
+    name: Clivens Petit
+    url: 'https://www.linkedin.com/in/peclevens'
+    email: clivens.petit@magicsoftbay.com
+  license:
+    name: GNU GPLv3
+    url: 'https://github.com/peclevens/event-apis-specs/blob/master/LICENSE'
+servers:
+  - url: 'http://localhost:4040'
+paths:
+  /events:
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ./models/event.v1.json
+          headers: {}
+      description: List all event
+      operationId: getAllEvents
+      tags: []
+    post:
+      responses:
+        '201':
+          description: Event created
+          content:
+            application/json:
+              schema:
+                $ref: ./models/id.v1.json
+      description: Create new event
+      tags: []
+      operationId: createEvent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/createevent.v1.json
+        description: Event creation request
+    delete:
+      responses:
+        '204':
+          description: No Content
+      operationId: deleteAllEvent
+      tags: []
+      description: Delete all events
+    parameters: []
+  '/events/{id}':
+    parameters:
+      - name: id
+        in: path
+        schema:
+          type: string
+        description: Event id
+        required: true
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/createevent.v1.json
+      operationId: getEventById
+      description: Get event by id
+    delete:
+      responses:
+        '204':
+          description: No Content
+      description: Delete event by id
+      tags: []
+      operationId: deleteEventById
+    put:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/event.v1.json
+      description: Update event
+      operationId: updateEventById
+      tags: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/event.v1.json
+        description: ''
+  '/events/{id}/sessions':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Event id
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ./models/session.v1.json
+      description: Get all sessions for a particular event
+      operationId: getSessionsByEventId
+    delete:
+      responses:
+        '204':
+          description: No Content
+      description: Delete all sessions for a particular event
+      operationId: deleteAllSessionsByEventId
+      tags: []
+    post:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/id.v1.json
+      description: Create a session for a particular event
+      tags: []
+      operationId: createSession
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/createsession.v1.json
+  '/events/sessions/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Session id
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/session.v1.json
+      description: Get session by id
+      operationId: getSessionById
+    put:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/session.v1.json
+      description: Update a session
+      operationId: updateSessionById
+      tags: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/session.v1.json
+    delete:
+      responses:
+        '204':
+          description: No Content
+      description: Delete session by id
+      operationId: deleteSessionById
+      tags: []

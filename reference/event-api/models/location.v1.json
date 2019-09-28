@@ -16,13 +16,13 @@
       "maxLength": 60
     }
   },
+  "example": {
+    "summary": "Location item",
+    "$ref": "../examples/location.v1.json"
+  },
   "required": [
     "address",
     "city",
     "country"
-  ],
-  "example": {
-    "summary": "Location response",
-    "$ref": "../examples/location.v1.json"
-  },
+  ]
 }

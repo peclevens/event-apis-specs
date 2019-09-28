@@ -1,0 +1,49 @@
+{
+  "title": "CreateEvent",
+  "type": "object",
+  "example": {
+    "summary": "Event creation request",
+    "$ref": "../examples/event.v1.json"
+  },
+  "description": "Event item",
+  "properties": {
+    "sessions": {
+      "type": "array",
+      "description": "Event sessions address",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "./createsession.v1.json"
+      }
+    },
+    "location": {
+      "$ref": "./location.v1.json"
+    },
+    "imageUrl": {
+      "type": "string",
+      "maxLength": 255,
+      "description": "Event URL picture"
+    },
+    "price": {
+      "type": "number",
+      "default": 0,
+      "description": "Event price",
+      "format": "double",
+      "maximum": 999.99
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Event start datetime"
+    },
+    "name": {
+      "type": "string",
+      "description": "Event name",
+      "minLength": 2,
+      "maxLength": 120
+    }
+  },
+  "required": [
+    "startDate",
+    "name"
+  ]
+}

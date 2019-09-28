@@ -1,0 +1,18 @@
+{
+  "title": "Id",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Item id"
+    }
+  },
+  "example": {
+    "summary": "Id response",
+    "$ref": "../examples/id.v1.json"
+  },
+  "required": [
+    "id"
+  ]
+}
