@@ -2,6 +2,7 @@
   "title": "CreateSession",
   "type": "object",
   "description": "Event session model",
+  "additionalProperties": false,
   "example": {
     "summary": "Session response",
     "$ref": "../examples/create-session.v1.json"

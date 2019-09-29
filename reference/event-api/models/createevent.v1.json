@@ -1,10 +1,7 @@
 {
   "title": "CreateEvent",
   "type": "object",
-  "example": {
-    "summary": "Event creation request",
-    "$ref": "../examples/create-event.v1.json"
-  },
+  "additionalProperties": false,
   "description": "Event item",
   "properties": {
     "sessions": {
@@ -41,6 +38,10 @@
       "minLength": 2,
       "maxLength": 120
     }
+  },
+  "example": {
+    "summary": "Event creation request",
+    "$ref": "../examples/create-event.v1.json"
   },
   "required": [
     "startDate",

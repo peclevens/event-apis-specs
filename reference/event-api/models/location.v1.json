@@ -2,6 +2,7 @@
   "title": "Location",
   "type": "object",
   "description": "Adddress item",
+  "additionalProperties": false,
   "properties": {
     "address": {
       "type": "string",

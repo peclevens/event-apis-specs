@@ -2,6 +2,7 @@
   "title": "Event",
   "type": "object",
   "description": "Event item",
+  "additionalProperties": false,
   "properties": {
     "id": {
       "type": "string",
