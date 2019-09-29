@@ -11,7 +11,8 @@ info:
     name: GNU GPLv3
     url: 'https://github.com/peclevens/event-apis-specs/blob/master/LICENSE'
 servers:
-  - url: 'http://{environment}.events.clivenspetit:{port}/{version}'
+  #- url: 'http://{environment}.events.clivenspetit.com:{port}/{basePath}'
+  - url: 'http://{environment}.events.clivenspetit.com:{port}'
     description: API server
     variables:
       environment:
@@ -27,7 +28,7 @@ servers:
           - '8443'
           - '443'
         default: '8443'
-      version:
+      basePath:
         default: v1
 paths:
   /events:
