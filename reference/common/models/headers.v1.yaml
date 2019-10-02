@@ -1,0 +1,153 @@
+# 
+# Headers.
+# See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers
+# 
+
+# Throttling headers.
+# See https://en.wikipedia.org/wiki/Exponential_backoff
+X-RateLimit-Limit:
+  name: X-RateLimit-Limit
+  description: The number of allowed requests in the current period.
+  in: header
+  required: false
+  schema:
+    type: integer
+    format: int32
+
+X-RateLimit-Remaining:
+  name: X-RateLimit-Remaining
+  description: The number of remaining requests in the current period.
+  in: header
+  required: false
+  schema:
+    type: integer
+    format: int32
+
+X-RateLimit-Reset:
+  name: X-RateLimit-Reset
+  description: The number of seconds left in the current period.
+  in: header
+  required: false
+  schema:
+    type: integer
+    format: int32
+
+Retry-After:
+    name: Retry-After
+    description: |
+      Retry contacting the endpoint at least after this number of seconds.
+      See https://tools.ietf.org/html/rfc7231#section-7.1.3
+    in: header
+    required: false
+    schema:
+      type: integer
+      format: int32
+
+# Header parameters for Optimistic Locking.
+Etag:
+  name: Etag
+  description: |
+    The RFC7232 ETag header field in a response provides the current entity-
+    tag for the selected resource. An entity-tag is an opaque identifier for
+    different versions of a resource over time, regardless whether multiple
+    versions are valid at the same time. An entity-tag consists of an opaque
+    quoted string, possibly prefixed by a weakness indicator.
+  in: header
+  example: W/"xy", "5", "7da7a728-f910-11e6-942a-68f728c1ba70"
+  required: false
+  schema:
+    type: string
+
+IfMatch:
+  name: If-Match
+  description: |
+    The RFC7232 If-Match header field in a request requires the server to
+    only operate on the resource that matches at least one of the provided
+    entity-tags. This allows clients express a precondition that prevent
+    the method from being applied if there have been any changes to the
+    resource.
+  in: header
+  required: false
+  example: '"5", "7da7a728-f910-11e6-942a-68f728c1ba70"'
+  schema:
+    type: string
+
+IfNoneMatch:
+  name: If-None-Match
+  description: |
+    The RFC7232 If-None-Match header field in a request requires the server
+    to only operate on the resource if it does not match any of the provided
+    entity-tags. If the provided entity-tag is `*`, it is required that the
+    resource does not exist at all.
+  in: header
+  required: false
+  example: '"7da7a728-f910-11e6-942a-68f728c1ba70", *'
+  schema:
+    type: string
+
+# Other parameters.
+X-Request-Id:
+  name: X-Request-Id
+  description: An opaque identifier assigned to this request.
+  in: header
+  example: "7da7a728-f910-11e6-942a-68f728c1ba70"
+  required: false
+  schema:
+    type: string
+    format: uuid
+
+X-TZ-Id:
+  name: X-TZ-Id
+  description: The request timezone
+  in: header
+  required: false
+  schema:
+    type: string
+    example: America/New_York
+
+X-TZ-Offset:
+  name: X-TZ-Offset
+  description: The request timezone offset in seconds.
+  in: header
+  required: false
+  schema:
+    type: integer
+    example: -16200000
+
+User-Agent:
+  name: User-Agent
+  description: The user agent name
+  in: header
+  required: false
+  schema:
+    type: string
+    example: Application/1.0.0-100 (Operating System 6.0)
+
+Accept-Language:
+  name: Accept-Language
+  description: The app accepted language
+  in: header
+  required: false
+  schema:
+    type: string
+    example: es;q=1
+
+X-As-User:
+  name: X-As-User
+  description: |
+    The X-As-User header is used by administrators to make API calls
+    for their managed users. It can also be used by a Service Account to 
+    make API calls for managed users or app users. 
+
+    You will have to pass 
+    the user id to impersonate. These API calls require the requests to 
+    come from an Admin, a Co-admin, or a Service Account to be successful.
+
+    NOTE: Admins can use this header to impersonate any managed users 
+    including co-admins. Co-admins can use it to impersonate managed users, 
+    but cannot impersonate any admin or co-admin.
+  in: header
+  required: false
+  schema:
+    type: string
+    example: es;q=1

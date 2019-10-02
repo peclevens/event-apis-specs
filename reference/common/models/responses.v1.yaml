@@ -1,0 +1,151 @@
+# 
+# Http status codes.
+# See https://www.restapitutorial.com/httpstatuscodes.html
+# 
+302MovedPermanently:
+  description: Moved Permanently
+  content:
+    application/problem+json:
+      schema:
+        $ref: './schemas/error.v1.json'
+
+304NotModified:
+  description: Not Modified
+  content:
+    application/problem+json:
+      schema:
+        $ref: './schemas/error.v1.json'
+
+400BadRequest:
+  description: Bad Request
+  content:
+    application/problem+json:
+      schema:
+        $ref: './schemas/error.v1.json'
+
+401Unauthorized:
+  description: Unauthorized
+  content:
+    application/problem+json:
+      schema:
+        $ref: './schemas/error.v1.json'
+
+403Forbidden:
+  description: Forbidden
+  content:
+    application/problem+json:
+      schema:
+        $ref: './schemas/error.v1.json'
+
+404NotFound:
+  description: Not Found
+  content:
+    application/problem+json:
+      schema:
+        $ref: './schemas/error.v1.json'
+
+405MethodNotAllowed:
+  description: Method Not Allowed
+  content:
+    application/problem+json:
+      schema:
+        $ref: './schemas/error.v1.json'
+
+406NotAcceptable:
+  description: Not Acceptable
+  content:
+    application/problem+json:
+      schema:
+        $ref: './schemas/error.v1.json'
+
+409Conflict:
+  description: Conflict
+  content:
+    application/problem+json:
+      schema:
+        $ref: './schemas/error.v1.json'
+
+410Gone:
+  description: Gone
+  content:
+    application/problem+json:
+      schema:
+        $ref: './schemas/error.v1.json'
+
+412PreconditionFailed:
+  description: Precondition Failed
+  content:
+    application/problem+json:
+      schema:
+        $ref: './schemas/error.v1.json'
+
+422UnprocessableEntity:
+  description: Unprocessable Entity
+  content:
+    application/problem+json:
+      schema:
+        $ref: './schemas/error.v1.json'
+
+429TooManyRequests:
+  description: | 
+    Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+  headers:
+    X-RateLimit-Limit:
+      $ref: './headers.v1.yaml#/X-RateLimit-Limit'
+    X-RateLimit-Remaining:
+      $ref: './headers.v1.yaml#/X-RateLimit-Remaining'
+    X-RateLimit-Reset:
+      $ref: './headers.v1.yaml#/X-RateLimit-Reset'
+    Retry-After:
+      $ref: './headers.v1.yaml#/Retry-After'
+  content:
+    application/problem+json:
+      schema:
+        $ref: './schemas/error.v1.json'
+
+500InternalServerError:
+  description: Internal Server Error
+  headers:
+    Retry-After:
+      $ref: './headers.v1.yaml#/Retry-After'
+  content:
+    application/problem+json:
+      schema:
+        $ref: './schemas/error.v1.json'
+
+502BadGateway:
+  description: Bad Gateway
+  headers:
+    Retry-After:
+      $ref: './headers.v1.yaml#/Retry-After'
+  content:
+    application/problem+json:
+      schema:
+        $ref: './schemas/error.v1.json'
+
+503ServiceUnavailable:
+  description: Service Unavailable
+  headers:
+    Retry-After:
+      $ref: './headers.v1.yaml#/Retry-After'
+  content:
+    application/problem+json:
+      schema:
+        $ref: './schemas/error.v1.json'
+
+504GatewayTimeout:
+  description: Gateway Timeout
+  headers:
+    Retry-After:
+      $ref: './headers.v1.yaml#/Retry-After'
+  content:
+    application/problem+json:
+      schema:
+        $ref: './schemas/error.v1.json'
+
+default:
+  description: Unexpected error
+  content:
+    application/problem+json:
+      schema:
+        $ref: './schemas/error.v1.json'

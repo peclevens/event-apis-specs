@@ -1,0 +1,82 @@
+# 
+# Parameters commonly used for pagination
+# 
+
+# Pagination parameters
+offset:
+  name: offset
+  in: query
+  description: The zero-ary offset index into the results
+  schema:
+    type: integer
+    default: 0
+    format: int32
+    minimum: 0
+    maximum: 2147483647
+
+limit:
+  name: limit
+  in: query
+  description: How many items to return at one time (max 100)
+  schema:
+    type: integer
+    format: int32
+    default: 25
+    minimum: 0
+    maximum: 100
+
+before:
+  name: before
+  in: query
+  description: |
+    An opaque identifier that points to the previous item in the 
+    collection.
+  example: 01BX9NSMKVXXS5PSP2FATZM123
+  schema:
+    type: string
+
+after:
+  name: after
+  in: query
+  description: |
+    An opaque identifier that points to the next item in the 
+    collection.
+  example: 01BX9NSMKVXXS5PSP2FATZM123
+  schema:
+    type: string
+
+# Collection sort parameter
+sort:
+  name: sort
+  in: query
+  description: |
+    Sorting order parameter.
+    This is a comma separated string of field name to sort on. 
+    Add the '+' (plus) sign in front of the field name to sort ascendly 
+    or the (-) minus sign to sort descendently.
+  schema:
+    type: string
+    examples:
+      - +fieldName
+      - -fieldName
+
+# Search filter parameter
+query:
+  name: query
+  in: query
+  description: Search query terms. Check API custom query language (DSL).
+  schema:
+    type: string
+
+# Field selection
+fields:
+  name: fields
+  in: query
+  description: |
+    Fields to retrieve. Comma separated list of field to include in the
+    request's response.
+  schema:
+    type: string
+    examples:
+      - fieldName
+      - fieldName.innerFieldName
