@@ -11,8 +11,7 @@ info:
     name: GNU GPLv3
     url: 'https://github.com/peclevens/event-apis-specs/blob/master/LICENSE'
 servers:
-  #- url: 'http://{environment}.events.clivenspetit.com:{port}/{basePath}'
-  - url: 'http://{environment}.events.clivenspetit.com:{port}'
+  - url: 'http://{environment}.events.clivenspetit.com:{port}/basePath'
     description: API server
     variables:
       environment:
@@ -39,9 +38,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: ./models/event.v1.json
+                $ref: ./models/eventpage.v1.json
       operationId: getAllEvents
       tags: []
       summary: List all event

@@ -1,0 +1,24 @@
+{
+  "title": "EventPage",
+  "type": "object",
+  "description": "Event page",
+  "additionalProperties": true,
+  "properties": {
+    "data": {
+      "type": "array",
+      "description": "Event sessions address",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "./event.v1.json"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "../../common/models/schemas/page.v1.json"
+    }
+  ],
+  "required": [
+    "data"
+  ]
+}
