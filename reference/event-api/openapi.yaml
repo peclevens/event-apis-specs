@@ -108,6 +108,7 @@ paths:
       responses:
         '204':
           description: No Content
+
   '/events/{id}':
     parameters:
       - name: id
@@ -156,6 +157,7 @@ paths:
           application/json:
             schema:
               $ref: ./models/event.v1.json
+
   '/events/{id}/sessions':
     parameters:
       - name: id
@@ -206,6 +208,7 @@ paths:
           application/json:
             schema:
               $ref: ./models/createsession.v1.json
+
   '/events/sessions/{id}':
     parameters:
       - name: id
