@@ -2,12 +2,6 @@
   "title": "Error",
   "type": "object",
   "additionalProperties": true,
-  "required": [
-    "status",
-    "requestId",
-    "type",
-    "timestamp"
-  ],
   "properties": {
     "status": {
       "type": "integer",
@@ -81,5 +75,27 @@
         }
       }
     }
-  }
+  },
+  "example": {
+    "status": 409,
+    "code": "sample_duplicate_item_code",
+    "requestId": "fbff2587-9de4-4aad-9dd5-c9739d21e20c",
+    "type": "error",
+    "message": "Item should not be duplicated",
+    "timestamp": "2019-12-10T12:34:04Z",
+    "contextInfo": {
+      "validationErrors": [
+        {
+          "field": "fieldName",
+          "message": "FieldName does not allow duplicate"
+        }
+      ]
+    }
+  },
+  "required": [
+    "status",
+    "requestId",
+    "type",
+    "timestamp"
+  ]
 }
