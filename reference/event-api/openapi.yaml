@@ -32,35 +32,73 @@ servers:
 paths:
   /events:
     get:
+      summary: List all event
+      description: List all event
+      operationId: getAllEvents
+      tags:
+        - Event
+      parameters:
+        - $ref: ../common/models/parameters.v1.yaml#/offset
+        - $ref: ../common/models/parameters.v1.yaml#/limit
+        - $ref: ../common/models/parameters.v1.yaml#/sort
+        - $ref: ../common/models/parameters.v1.yaml#/query
+        - $ref: ../common/models/parameters.v1.yaml#/fields
       responses:
         '200':
           description: OK
+          headers:
+            X-RateLimit-Limit:
+              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Limit
+            X-RateLimit-Remaining:
+              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Remaining
+            X-RateLimit-Reset:
+              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Reset
           content:
             application/json:
               schema:
                 $ref: ./models/eventpage.v1.json
-      operationId: getAllEvents
-      tags: []
-      summary: List all event
-      description: List all event
+        '429':
+          $ref: ../common/models/responses.v1.yaml#/429TooManyRequests
+        '503':
+          $ref: ../common/models/responses.v1.yaml#/503ServiceUnavailable'
+        'default':
+          $ref: ../common/models/responses.v1.yaml#/default
     post:
+      summary: Create new event
+      description: Create new event
+      operationId: createEvent
+      tags:
+        - Event
       responses:
         '201':
           description: Event created
+          headers:
+            X-RateLimit-Limit:
+              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Limit
+            X-RateLimit-Remaining:
+              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Remaining
+            X-RateLimit-Reset:
+              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Reset
           content:
             application/json:
               schema:
                 $ref: ./models/id.v1.json
-      tags: []
-      operationId: createEvent
+        '409':
+          $ref: ../common/models/responses.v1.yaml#/409Conflict
+        '422':
+          $ref: ../common/models/responses.v1.yaml#/422UnprocessableEntity
+        '429':
+          $ref: ../common/models/responses.v1.yaml#/429TooManyRequests
+        '503':
+          $ref: ../common/models/responses.v1.yaml#/503ServiceUnavailable'
+        'default':
+          $ref: ../common/models/responses.v1.yaml#/default
       requestBody:
+        description: Event creation request
         content:
           application/json:
             schema:
               $ref: ./models/createevent.v1.json
-        description: Event creation request
-      summary: Create new event
-      description: Create new event
     delete:
       responses:
         '204':
