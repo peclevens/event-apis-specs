@@ -42,7 +42,6 @@ paths:
                 type: array
                 items:
                   $ref: ./models/event.v1.json
-          headers: {}
       operationId: getAllEvents
       tags: []
       summary: List all event

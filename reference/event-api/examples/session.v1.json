@@ -1,4 +1,5 @@
 {
+  "version": 1,
   "id": "eb3a377c-3742-43ac-8d87-35534de2db8f",
   "name": "Using Angular 4 Pipes",
   "description": "Learn all about the new pipes in Angular 4, both how to write them, and how to get the new AI CLI to write them for you. Given by the famous PBD, president of Angular University (formerly Oxford University)",

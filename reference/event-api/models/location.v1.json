@@ -4,6 +4,14 @@
   "description": "Adddress item",
   "additionalProperties": false,
   "properties": {
+    "version": {
+      "type": "integer",
+      "description": "The version of this event object.",
+      "default": 0,
+      "format": "int32",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
     "address": {
       "type": "string",
       "maxLength": 120

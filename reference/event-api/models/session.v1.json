@@ -3,11 +3,15 @@
   "type": "object",
   "description": "Event session model",
   "additionalProperties": false,
-  "example": {
-    "summary": "Session response",
-    "$ref": "../examples/session.v1.json"
-  },
   "properties": {
+    "version": {
+      "type": "integer",
+      "description": "The version of this event object.",
+      "default": 0,
+      "format": "int32",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
     "id": {
       "type": "string",
       "description": "Session id",
@@ -52,6 +56,10 @@
       "maxLength": 120,
       "description": "Session name"
     }
+  },
+  "example": {
+    "summary": "Session response",
+    "$ref": "../examples/session.v1.json"
   },
   "required": [
     "id",
