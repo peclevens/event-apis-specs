@@ -1,0 +1,1321 @@
+openapi: 3.0.2
+info:
+  title: Event API
+  description: Event management API
+  version: '1.0'
+  contact:
+    name: Clivens Petit
+    url: https://www.linkedin.com/in/peclevens
+    email: clivens.petit@magicsoftbay.com
+  license:
+    name: GNU GPLv3
+    url: 'https://github.com/peclevens/event-apis-specs/blob/master/LICENSE'
+servers:
+- url: http://{environment}.events.clivenspetit.com:{port}/{basePath}
+  description: API server
+  variables:
+    environment:
+      enum:
+      - test
+      - dev
+      - qa
+      - prod
+      default: dev
+      description: API running environment
+    port:
+      enum:
+      - '8443'
+      - '443'
+      default: '8443'
+    basePath:
+      default: v1
+paths:
+  /events:
+    get:
+      tags:
+      - Event
+      summary: getAllEvents
+      description: List all event
+      operationId: GetAllEvents
+      parameters:
+      - name: offset
+        in: query
+        description: The zero-ary offset index into the results
+        style: form
+        explode: true
+        schema:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+          format: int32
+          default: 0
+          example: 0
+      - name: limit
+        in: query
+        description: How many items to return at one time (max 100)
+        style: form
+        explode: true
+        schema:
+          maximum: 100
+          minimum: 0
+          type: integer
+          format: int32
+          default: 25
+          example: 25
+      - name: sort
+        in: query
+        description: "Sorting order parameter.\nThis is a comma separated string of field name to sort on. \nAdd the '+' (plus) sign in front of the field name to sort ascendly \nor the (-) minus sign to sort descendently."
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: query
+        in: query
+        description: Search query terms. Check API custom query language (DSL).
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: >-
+          Fields to retrieve. Comma separated list of field to include in the
+
+          request's response.
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          headers:
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Reset:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventPage'
+        429:
+          description: >
+            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        503:
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      deprecated: false
+    post:
+      tags:
+      - Event
+      summary: createEvent
+      description: Create new event
+      operationId: CreateEvent
+      parameters: []
+      requestBody:
+        description: Event creation request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEvent'
+        required: false
+      responses:
+        201:
+          description: Event created
+          headers:
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Reset:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Id'
+        409:
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        422:
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        429:
+          description: >
+            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        503:
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      deprecated: false
+    delete:
+      tags:
+      - Event
+      summary: deleteAllEvent
+      description: Delete all events
+      operationId: DeleteAllEvent
+      parameters: []
+      responses:
+        204:
+          description: No Content
+          headers:
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Reset:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+        429:
+          description: >
+            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        503:
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      deprecated: false
+  /events/{id}:
+    get:
+      tags:
+      - Event
+      summary: getEventById
+      description: Get event by id
+      operationId: GetEventById
+      parameters:
+      - name: id
+        in: path
+        description: Event id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          headers:
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Reset:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        429:
+          description: >
+            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        503:
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      deprecated: false
+    delete:
+      tags:
+      - Event
+      summary: deleteEventById
+      description: Delete event by id
+      operationId: DeleteEventById
+      parameters:
+      - name: id
+        in: path
+        description: Event id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        204:
+          description: No Content
+          headers:
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Reset:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        429:
+          description: >
+            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        503:
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      deprecated: false
+    put:
+      tags:
+      - Event
+      summary: updateEventById
+      description: Update event
+      operationId: UpdateEventById
+      parameters:
+      - name: id
+        in: path
+        description: Event id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Event'
+        required: false
+      responses:
+        200:
+          description: OK
+          headers:
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Reset:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        429:
+          description: >
+            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        503:
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      deprecated: false
+  /events/{id}/sessions:
+    get:
+      tags:
+      - Session
+      summary: getSessionsByEventId
+      description: Get all sessions for a particular event
+      operationId: GetSessionsByEventId
+      parameters:
+      - name: id
+        in: path
+        description: Event id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: "Sorting order parameter.\nThis is a comma separated string of field name to sort on. \nAdd the '+' (plus) sign in front of the field name to sort ascendly \nor the (-) minus sign to sort descendently."
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: query
+        in: query
+        description: Search query terms. Check API custom query language (DSL).
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: >-
+          Fields to retrieve. Comma separated list of field to include in the
+
+          request's response.
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          headers:
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Reset:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Session'
+                description: OK
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        429:
+          description: >
+            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        503:
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      deprecated: false
+    delete:
+      tags:
+      - Session
+      summary: deleteAllSessionsByEventId
+      description: Delete all sessions for a particular event
+      operationId: DeleteAllSessionsByEventId
+      parameters:
+      - name: id
+        in: path
+        description: Event id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        204:
+          description: No Content
+          headers:
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Reset:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        429:
+          description: >
+            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        503:
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      deprecated: false
+    post:
+      tags:
+      - Session
+      summary: createSession
+      description: Create a session for a particular event
+      operationId: CreateSession
+      parameters:
+      - name: id
+        in: path
+        description: Event id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSession'
+        required: false
+      responses:
+        200:
+          description: OK
+          headers:
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Reset:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Id'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        429:
+          description: >
+            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        503:
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      deprecated: false
+  /events/sessions/{id}:
+    get:
+      tags:
+      - Session
+      summary: getSessionById
+      description: Get session by id
+      operationId: GetSessionById
+      parameters:
+      - name: id
+        in: path
+        description: Session id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          headers:
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Reset:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        429:
+          description: >
+            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        503:
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      deprecated: false
+    put:
+      tags:
+      - Session
+      summary: updateSessionById
+      description: Update a session
+      operationId: UpdateSessionById
+      parameters:
+      - name: id
+        in: path
+        description: Session id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Session'
+        required: false
+      responses:
+        200:
+          description: OK
+          headers:
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Reset:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        429:
+          description: >
+            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        503:
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      deprecated: false
+    delete:
+      tags:
+      - Session
+      summary: deleteSessionById
+      description: Delete session by id
+      operationId: DeleteSessionById
+      parameters:
+      - name: id
+        in: path
+        description: Session id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        204:
+          description: No Content
+          headers:
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Reset:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        429:
+          description: >
+            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        503:
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      deprecated: false
+components:
+  schemas:
+    EventPage:
+      title: EventPage
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - required:
+        - data
+        type: object
+        properties:
+          data:
+            uniqueItems: true
+            type: array
+            items:
+              $ref: '#/components/schemas/Event'
+            description: Event sessions address
+      description: Event page
+    Page:
+      title: Page
+      required:
+      - pagination
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    Pagination:
+      title: Pagination
+      required:
+      - totalPages
+      - totalElements
+      - page
+      - size
+      - numberOfElements
+      type: object
+      properties:
+        totalPages:
+          minimum: 0
+          type: integer
+          description: The total number of pages
+          format: int32
+        totalElements:
+          minimum: 0
+          type: integer
+          description: The total number of elements
+          format: int32
+        page:
+          minimum: 0
+          type: integer
+          description: The current page number
+          format: int32
+        size:
+          minimum: 0
+          type: integer
+          description: Max item per page
+          format: int32
+        numberOfElements:
+          minimum: 0
+          type: integer
+          description: Number of element in the current page
+          format: int64
+      example:
+        totalPages: 4
+        totalElements: 25
+        page: 0
+        size: 25
+        numberOfElements: 100
+    Event:
+      title: Event
+      required:
+      - id
+      - name
+      - startDate
+      type: object
+      properties:
+        version:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+          description: The version of this event object.
+          format: int32
+          example: 0
+        id:
+          type: string
+          description: Event id
+          format: uuid
+        name:
+          maxLength: 120
+          minLength: 2
+          type: string
+          description: Event name
+        startDate:
+          type: string
+          description: Event start datetime
+          format: date-time
+        price:
+          maximum: 999.99000000000001
+          type: number
+          description: Event price
+        imageUrl:
+          maxLength: 2048
+          type: string
+          description: Event URL picture
+        location:
+          $ref: '#/components/schemas/Location'
+        sessions:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Session'
+          description: Event sessions address
+      description: Event item
+      example:
+        version: 1
+        id: 5ab39626-7121-417c-8c91-3c2eaa39fef6
+        name: Angular Connect
+        startDate: 2036-09-26T10:00:00Z
+        price: 599.99000000000001
+        imageUrl: /assets/images/angularconnect-shield.png
+        location:
+          version: 1
+          address: 1057 DT
+          city: London
+          country: England
+        sessions:
+        - version: 1
+          id: eb3a377c-3742-43ac-8d87-35534de2db8f
+          name: Using Angular 4 Pipes
+          description: Learn all about the new pipes in Angular 4, both how to write them, and how to get the new AI CLI to write them for you. Given by the famous PBD, president of Angular University (formerly Oxford University)
+          presenter: Peter Bacon Darwin
+          duration: 01:00
+          level: BEGINNER
+          voters:
+          - bradgreen
+          - igorminar
+          - martinfowler
+        - version: 1
+          id: c4703651-2d70-4086-b47c-06bb83e15b5a
+          name: Getting the most out of your dev team
+          presenter: Jeff Cross
+          duration: 01:00
+          level: INTERMEDIATE
+          description: We all know that our dev teams work hard, but with the right management they can be even more productive, without overworking them. In this session I'll show you how to get the best results from the talent you already have on staff.
+          voters:
+          - johnpapa
+          - bradgreen
+          - igorminar
+          - martinfowler
+        - version: 1
+          id: 87dd2d04-0de5-4a2b-8c1b-e41a682f617a
+          name: Angular 4 Performance Metrics
+          presenter: Rob Wormald
+          duration: 02:30
+          level: ADVANCED
+          description: Angular 4 Performance is hot. In this session, we'll see how Angular gets such great performance by preloading data on your users devices before they even hit your site using the new predictive algorithms and thought reading software built into Angular 4.
+          voters: []
+        - version: 1
+          id: 495755c8-e695-40b6-9e59-e9166d24384d
+          name: Angular 5 Look Ahead
+          presenter: Brad Green
+          duration: 02:00
+          level: ADVANCED
+          description: Even though Angular 5 is still 6 years away, we all want to know all about it so that we can spend endless hours in meetings debating if we should use Angular 4 or not. This talk will look at Angular 6 even though no code has yet been written for it. We'll look at what it might do, and how to convince your manager to hold off on any new apps until it's released
+          voters: []
+        - version: 1
+          id: d379ed19-3859-472f-8cae-2b51154b16ad
+          name: Basics of Angular 4
+          presenter: John Papa
+          duration: 02:00
+          level: ADVANCED
+          description: It's time to learn the basics of Angular 4. This talk will give you everything you need to know about Angular 4 to get started with it today and be building UI's for your self driving cars and butler-bots in no time.
+          voters:
+          - bradgreen
+          - igorminar
+    Location:
+      title: Location
+      required:
+      - address
+      - city
+      - country
+      type: object
+      properties:
+        version:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+          description: The version of this event object.
+          format: int32
+          example: 0
+        address:
+          maxLength: 120
+          type: string
+        city:
+          maxLength: 60
+          type: string
+        country:
+          maxLength: 60
+          type: string
+      description: Adddress item
+      example:
+        version: 1
+        address: 1057 DT
+        city: London
+        country: England
+        id: e7482d2d-17ec-41ce-80ff-79a6bc063708
+    Session:
+      title: Session
+      required:
+      - id
+      - level
+      - duration
+      - presenter
+      - name
+      type: object
+      properties:
+        version:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+          description: The version of this event object.
+          format: int32
+          example: 0
+        id:
+          type: string
+          description: Session id
+          format: uuid
+        voters:
+          type: array
+          items:
+            maxLength: 16
+            minLength: 8
+            pattern: ^[a-z0-9_.-]+$
+            type: string
+          description: ''
+        description:
+          maxLength: 5000
+          type: string
+        level:
+          $ref: '#/components/schemas/Level'
+        duration:
+          pattern: ^(2[0-3]|[01]?[0-9]):([0-5]?[0-9])$
+          type: string
+          description: Session duration
+        presenter:
+          maxLength: 120
+          minLength: 1
+          pattern: ^[a-zA-Z]+(?:(?:[',. -][a-zA-Z ])?[a-zA-Z]*)*$
+          type: string
+          description: The speaker of the session
+        name:
+          maxLength: 120
+          minLength: 2
+          type: string
+          description: Session name
+      description: Event session model
+      example:
+        version: 1
+        id: eb3a377c-3742-43ac-8d87-35534de2db8f
+        name: Using Angular 4 Pipes
+        description: Learn all about the new pipes in Angular 4, both how to write them, and how to get the new AI CLI to write them for you. Given by the famous PBD, president of Angular University (formerly Oxford University)
+        presenter: Peter Bacon Darwin
+        duration: 10:00
+        level: BEGINNER
+        voters:
+        - bradgreen
+        - igorminar
+        - martinfowler
+    Level:
+      title: Level
+      enum:
+      - BEGINNER
+      - INTERMEDIATE
+      - ADVANCED
+      type: string
+      example: BEGINNER
+    ErrorContextInfo:
+      title: ErrorContextInfo
+      type: object
+      properties:
+        validationErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          description: A list of validation error
+    ValidationError:
+      title: ValidationError
+      required:
+      - field
+      - message
+      type: object
+      properties:
+        field:
+          maxLength: 255
+          minLength: 2
+          type: string
+          description: The field name failing validation rules
+        message:
+          maxLength: 255
+          minLength: 2
+          type: string
+          description: The validation error message
+      example:
+        field: fieldName
+        message: FieldName does not allow duplicate
+    ErrorResponse:
+      title: ErrorResponse
+      required:
+      - status
+      - requestId
+      - timestamp
+      type: object
+      properties:
+        status:
+          maximum: 600
+          minimum: 100
+          type: integer
+          description: The HTTP status of the response
+          format: int32
+        code:
+          maxLength: 255
+          minLength: 2
+          pattern: ^[a-z0-9.-_]+$
+          type: string
+          description: A specific error code given more context to the current error
+        requestId:
+          type: string
+          description: An opaque identifier assigned to this request
+          format: uuid
+        type:
+          maxLength: 120
+          minLength: 2
+          pattern: ^[a-z0-9.-_]+$
+          type: string
+          description: Error type
+          example: error
+        message:
+          maxLength: 1024
+          minLength: 2
+          type: string
+          description: A message explaning the error
+        timestamp:
+          type: string
+          description: The timestamp when the occurred
+          format: date-time
+        contextInfo:
+          $ref: '#/components/schemas/ErrorContextInfo'
+      example:
+        status: 409
+        code: sample_duplicate_item_code
+        requestId: fbff2587-9de4-4aad-9dd5-c9739d21e20c
+        type: error
+        message: Item should not be duplicated
+        timestamp: 2019-12-10T12:34:04Z
+        contextInfo:
+          validationErrors:
+          - field: fieldName
+            message: FieldName does not allow duplicate
+    CreateEvent:
+      title: CreateEvent
+      required:
+      - startDate
+      - name
+      type: object
+      properties:
+        sessions:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateSession'
+          description: Event sessions address
+        location:
+          $ref: '#/components/schemas/Location'
+        imageUrl:
+          maxLength: 2048
+          type: string
+          description: Event URL picture
+        price:
+          maximum: 999.99000000000001
+          type: number
+          description: Event price
+          example: 0
+        startDate:
+          type: string
+          description: Event start datetime
+          format: date-time
+        name:
+          maxLength: 120
+          minLength: 2
+          type: string
+          description: Event name
+      description: Event item
+      example:
+        name: Angular Connect
+        startDate: 2036-09-26T10:00:00Z
+        price: 599.99000000000001
+        imageUrl: /assets/images/angularconnect-shield.png
+        location:
+          address: 1057 DT
+          city: London
+          country: England
+        sessions:
+        - name: Using Angular 4 Pipes
+          description: Learn all about the new pipes in Angular 4, both how to write them, and how to get the new AI CLI to write them for you. Given by the famous PBD, president of Angular University (formerly Oxford University)
+          presenter: Peter Bacon Darwin
+          duration: 01:00
+          level: BEGINNER
+        id: f7b18078-e208-4c37-8441-3024f430a309
+    CreateSession:
+      title: CreateSession
+      required:
+      - level
+      - duration
+      - presenter
+      - name
+      type: object
+      properties:
+        description:
+          maxLength: 5000
+          type: string
+        level:
+          $ref: '#/components/schemas/Level'
+        duration:
+          pattern: ^(2[0-3]|[01]?[0-9]):([0-5]?[0-9])$
+          type: string
+          description: Session duration
+        presenter:
+          maxLength: 120
+          minLength: 1
+          pattern: ^[a-zA-Z]+(?:(?:[',. -][a-zA-Z ])?[a-zA-Z]*)*$
+          type: string
+          description: The speaker of the session
+        name:
+          maxLength: 120
+          minLength: 2
+          type: string
+          description: Session name
+      description: Event session model
+      example:
+        name: Using Angular 4 Pipes
+        description: Learn all about the new pipes in Angular 4, both how to write them, and how to get the new AI CLI to write them for you. Given by the famous PBD, president of Angular University (formerly Oxford University)
+        presenter: Peter Bacon Darwin
+        duration: 01:00
+        level: BEGINNER
+        id: 950b46ec-6186-4103-bb3a-aa7cf5ffb86e
+    Id:
+      title: Id
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: string
+          description: Item id
+          format: uuid
+      example:
+        id: 5ab39626-7121-417c-8c91-3c2eaa39fef6
+tags:
+- name: Event
+  description: ''
+- name: Session
+  description: ''
