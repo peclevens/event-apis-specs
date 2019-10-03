@@ -24,3 +24,4 @@ Event management APIs specification and documentation.
 - [HTTP Headers docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)
 - [Reusable OpenAPI schemas and others](https://github.com/teamdigitale/openapi)
 - [OpenAPI Tools](https://openapi.tools/)
+- [Swagger OpenAPI Online Editor](https://editor.swagger.io/)
