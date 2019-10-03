@@ -1,18 +1,18 @@
 {
-  "title": "Error",
+  "title": "ErrorResponse",
   "type": "object",
   "additionalProperties": true,
   "properties": {
     "status": {
       "type": "integer",
       "format": "int32",
-      "title": "The HTTP status of the response",
+      "description": "The HTTP status of the response",
       "minimum": 100,
       "maximum": 600
     },
     "code": {
       "type": "string",
-      "title": "A specific error code given more context to the current error",
+      "description": "A specific error code given more context to the current error",
       "minLength": 2,
       "maxLength": 255,
       "pattern": "^[a-z0-9.-_]+$"
@@ -20,11 +20,11 @@
     "requestId": {
       "type": "string",
       "format": "uuid",
-      "title": "An opaque identifier assigned to this request"
+      "description": "An opaque identifier assigned to this request"
     },
     "type": {
       "type": "string",
-      "title": "Error type",
+      "description": "Error type",
       "minLength": 2,
       "maxLength": 120,
       "default": "error",
@@ -32,45 +32,25 @@
     },
     "message": {
       "type": "string",
-      "title": "A message explaning the error",
+      "description": "A message explaning the error",
       "minLength": 2,
       "maxLength": 1024
     },
     "timestamp": {
       "type": "string",
       "format": "date-time",
-      "title": "The timestamp when the occurred"
+      "description": "The timestamp when the occurred"
     },
     "contextInfo": {
       "type": "object",
-      "title": "An object with context information/data about the error",
+      "title": "ErrorContextInfo",
       "additionalProperties": true,
       "properties": {
         "validationErrors": {
           "type": "array",
-          "title": "A list of validation error",
+          "description": "A list of validation error",
           "items": {
-            "type": "object",
-            "title": "ValidationError",
-            "additionalProperties": true,
-            "required": [
-              "field",
-              "message"
-            ],
-            "properties": {
-              "field": {
-                "type": "string",
-                "title": "The field name failing validation rules",
-                "minLength": 2,
-                "maxLength": 255
-              },
-              "message": {
-                "type": "string",
-                "title": "The validation error message",
-                "minLength": 2,
-                "maxLength": 255
-              }
-            }
+            "$ref": "./validationerror.v1.json"
           }
         }
       }
@@ -95,7 +75,6 @@
   "required": [
     "status",
     "requestId",
-    "type",
     "timestamp"
   ]
 }

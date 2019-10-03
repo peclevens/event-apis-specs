@@ -1,0 +1,27 @@
+{
+  "title": "ValidationError",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "field": {
+      "type": "string",
+      "description": "The field name failing validation rules",
+      "minLength": 2,
+      "maxLength": 255
+    },
+    "message": {
+      "type": "string",
+      "description": "The validation error message",
+      "minLength": 2,
+      "maxLength": 255
+    }
+  },
+  "example": {
+    "field": "fieldName",
+    "message": "FieldName does not allow duplicate"
+  },
+  "required": [
+    "field",
+    "message"
+  ]
+}

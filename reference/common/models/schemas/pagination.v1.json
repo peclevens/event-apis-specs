@@ -1,0 +1,51 @@
+{
+  "type": "object",
+  "title": "Pagination",
+  "additionalProperties": true,
+  "properties": {
+    "totalPages": {
+      "type": "integer",
+      "format": "int32",
+      "description": "The total number of pages",
+      "minimum": 0
+    },
+    "totalElements": {
+      "type": "integer",
+      "format": "int32",
+      "description": "The total number of elements",
+      "minimum": 0
+    },
+    "page": {
+      "type": "integer",
+      "format": "int32",
+      "description": "The current page number",
+      "minimum": 0
+    },
+    "size": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Max item per page",
+      "minimum": 0
+    },
+    "numberOfElements": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Number of element in the current page",
+      "minimum": 0
+    }
+  },
+  "example": {
+    "totalPages": 4,
+    "totalElements": 25,
+    "page": 0,
+    "size": 25,
+    "numberOfElements": 100
+  },
+  "required": [
+    "totalPages",
+    "totalElements",
+    "page",
+    "size",
+    "numberOfElements"
+  ]
+}
