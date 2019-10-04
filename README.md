@@ -1,6 +1,6 @@
 # Event APIs Specifications
 
-This project is part of a set in an effort to create a production's grade application using leading technologies following best practices. The application is intented to have very simple use cases, yet build around overkilled Software architecture and design principles to assure good Software quality characteristics like maintainability, correctness, reusability, reliability, portability, and efficiency.
+This project is part of a set in an effort to create a production's grade application using leading technologies following best practices. The application is intented to have very simple use cases, yet build around sophisticated Software architecture and design principles to assure good Software quality characteristics like maintainability, correctness, reusability, reliability, portability, and efficiency.
 
 The sample application will allow its users to retrieve, create, edit and delete  technology conferences/events and their sessions. This idea was taken from **Joe Eames** and **Jim Cooper** online course [Angular Fundamentals](https://app.pluralsight.com/library/courses/angular-fundamentals) at [Pluralsight](https://pluralsight.com).
 
