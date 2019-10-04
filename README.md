@@ -14,7 +14,7 @@ To run the APIs documentations portal, the following tools are required:
 
 ## Getting Started
 
-To run the APIs documentation portal, please run the following command to build a docker image, create and run a docker container name `docs`.
+To run the APIs documentations portal, please run the following command to build a docker image, create and run a docker container name `docs`.
 
 ```bash
 docker build -t docs:1.0.0 . && \
@@ -34,7 +34,7 @@ Click any link to visit its API specification.
 
 
 ## Notes
-- The following JSON schema keywords `oneOf`, `anyOf` and `allOf` are valid in OpenAPI 3.0, but they are not yet supported in `Swagger Editor` nor in `Postman` which will prevent some schemas from being validated or loaded without issue.
+- The following JSON schema keywords `oneOf`, `anyOf` and `allOf` are valid in OpenAPI 3.0, but they are not yet supported in `Swagger Editor` nor in `Postman` which will prevent some schemas from being validated or loaded successfully.
 
 
 ## References
