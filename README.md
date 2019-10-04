@@ -17,8 +17,8 @@ To run the APIs documentations portal, the following tools are required:
 To run the APIs documentations portal, please run the following command to build a docker image, create and run a docker container name `docs`.
 
 ```bash
-docker build -t docs:1.0.0 . && \
-	docker run --name docs -p 8082:8080 -it -d docs:1.0.0
+docker build -t event-apis-docs:1.0.0 . && \
+	docker run --name event-apis-docs -p 8082:8080 -d event-apis-docs:1.0.0
 ```
 
 After successful execution of the command, please enter the following address in your browser to see the APIs documentations portal.
