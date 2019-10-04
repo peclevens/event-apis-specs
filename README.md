@@ -37,6 +37,13 @@ Click any link to visit its API specification.
 - The following JSON schema keywords `oneOf`, `anyOf` and `allOf` are valid in OpenAPI 3.0, but they are not yet supported in `Swagger Editor` nor in `Postman` which will prevent some schemas from being validated or loaded successfully.
 
 
+## Author Contact Information
+
+- [Linkedin](https://www.linkedin.com/in/peclevens)
+- [Facebook](https://www.facebook.com/peclevens)
+- [Twitter](https://twitter.com/peclevens)
+
+
 ## References
 - [Convert JSON Schema to Java POJO](https://github.com/joelittlejohn/jsonschema2pojo/wiki/Getting-Started#the-command-line-interface) This converter is available online [here](http://www.jsonschema2pojo.org/) to generate a download Java POJO. It also provides a command line interface (CLI), maven and gradle plugin to generate all POJOs from all schemas in a specific directory.
 - [Convert JSON Schema to Java POJO](https://app.quicktype.io/) This converter offers option to convert schemas to other languages like Java, Go, C++, C#, JavaScript, TypeScrypt, Swift, Objective C, Kotlin and others.
