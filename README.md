@@ -30,7 +30,7 @@ After successful execution of the command, please enter the following address in
 
 Click any link to visit its API specification.
 
-- [Event API](./reference/event-api/README.md)
+- [Event API](./reference/event-api/)
 
 
 ## Notes
