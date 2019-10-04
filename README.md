@@ -1,14 +1,43 @@
 # Event APIs Specifications
-Event management APIs specification and documentation.
 
-### API Specific docs
+This project is part of a set in an effort to create a production's grade application using leading technologies following best practices. The application is intented to have very simple use cases, yet build around overkilled Software architecture and design principles to assure good Software quality characteristics like maintainability, correctness, reusability, reliability, portability, and efficiency.
+
+The sample application will allow its users to retrieve, create, edit and delete  technology conferences/events and their sessions. This idea was taken from **Joe Eames** and **Jim Cooper** online course [Angular Fundamentals](https://app.pluralsight.com/library/courses/angular-fundamentals) at [Pluralsight](https://pluralsight.com).
+
+
+## Requirements
+
+To run the APIs documentations portal, the following tools are required:
+
+1. Docker installed and configured.
+
+
+## Getting Started
+
+To run the APIs documentation portal, please run the following command to build a docker image, create and run a docker container name `docs`.
+
+```bash
+docker build -t docs:1.0.0 . && \
+	docker run --name docs -p 8082:8080 -it -d docs:1.0.0
+```
+
+After successful execution of the command, please enter the following address in your browser to see the APIs documentations portal.
+
+[http://localhost:8082](http://localhost:8082)
+
+
+## API List Documentations
+
+Click any link to visit its API specification.
+
 - [Event API](./reference/event-api/README.md)
 
-### Notes
+
+## Notes
 - The following JSON schema keywords `oneOf`, `anyOf` and `allOf` are valid in OpenAPI 3.0, but they are not yet supported in `Swagger Editor` nor in `Postman` which will prevent some schemas from being validated or loaded without issue.
 
 
-### References
+## References
 - [Convert JSON Schema to Java POJO](https://github.com/joelittlejohn/jsonschema2pojo/wiki/Getting-Started#the-command-line-interface) This converter is available online [here](http://www.jsonschema2pojo.org/) to generate a download Java POJO. It also provides a command line interface (CLI), maven and gradle plugin to generate all POJOs from all schemas in a specific directory.
 - [Convert JSON Schema to Java POJO](https://app.quicktype.io/) This converter offers option to convert schemas to other languages like Java, Go, C++, C#, JavaScript, TypeScrypt, Swift, Objective C, Kotlin and others.
 - [JSON to Json Schema generator](https://jsonschema.net/)
