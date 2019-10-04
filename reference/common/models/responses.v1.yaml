@@ -88,7 +88,7 @@
 
 429TooManyRequests:
   description: | 
-    Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+    Too Many Requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
   headers:
     X-RateLimit-Limit:
       $ref: './headers.v1.yaml#/X-RateLimit-Limit'
