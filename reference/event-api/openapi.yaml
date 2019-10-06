@@ -48,31 +48,31 @@ paths:
       tags:
         - Event
       parameters:
-        - $ref: ../common/models/parameters.v1.yaml#/offset
-        - $ref: ../common/models/parameters.v1.yaml#/limit
-        - $ref: ../common/models/parameters.v1.yaml#/sort
-        - $ref: ../common/models/parameters.v1.yaml#/query
-        - $ref: ../common/models/parameters.v1.yaml#/fields
+        - $ref: '../common/models/parameters.v1.yaml#/offset'
+        - $ref: '../common/models/parameters.v1.yaml#/limit'
+        - $ref: '../common/models/parameters.v1.yaml#/sort'
+        - $ref: '../common/models/parameters.v1.yaml#/query'
+        - $ref: '../common/models/parameters.v1.yaml#/fields'
       responses:
         '200':
           description: OK
           headers:
             X-RateLimit-Limit:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Limit
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Limit'
             X-RateLimit-Remaining:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Remaining
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Remaining'
             X-RateLimit-Reset:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Reset
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Reset'
           content:
             application/json:
               schema:
                 $ref: ./models/eventpage.v1.json
         '429':
-          $ref: ../common/models/responses.v1.yaml#/429TooManyRequests
+          $ref: '../common/models/responses.v1.yaml#/429TooManyRequests'
         '503':
-          $ref: ../common/models/responses.v1.yaml#/503ServiceUnavailable
-        'default':
-          $ref: ../common/models/responses.v1.yaml#/default
+          $ref: '../common/models/responses.v1.yaml#/503ServiceUnavailable'
+        default:
+          $ref: '../common/models/responses.v1.yaml#/default'
     post:
       summary: Create new event
       description: Create new event
@@ -84,25 +84,25 @@ paths:
           description: Event created
           headers:
             X-RateLimit-Limit:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Limit
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Limit'
             X-RateLimit-Remaining:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Remaining
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Remaining'
             X-RateLimit-Reset:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Reset
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Reset'
           content:
             application/json:
               schema:
                 $ref: ./models/id.v1.json
         '409':
-          $ref: ../common/models/responses.v1.yaml#/409Conflict
+          $ref: '../common/models/responses.v1.yaml#/409Conflict'
         '422':
-          $ref: ../common/models/responses.v1.yaml#/422UnprocessableEntity
+          $ref: '../common/models/responses.v1.yaml#/422UnprocessableEntity'
         '429':
-          $ref: ../common/models/responses.v1.yaml#/429TooManyRequests
+          $ref: '../common/models/responses.v1.yaml#/429TooManyRequests'
         '503':
-          $ref: ../common/models/responses.v1.yaml#/503ServiceUnavailable
-        'default':
-          $ref: ../common/models/responses.v1.yaml#/default
+          $ref: '../common/models/responses.v1.yaml#/503ServiceUnavailable'
+        default:
+          $ref: '../common/models/responses.v1.yaml#/default'
       requestBody:
         description: Event creation request
         content:
@@ -120,17 +120,17 @@ paths:
           description: No Content
           headers:
             X-RateLimit-Limit:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Limit
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Limit'
             X-RateLimit-Remaining:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Remaining
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Remaining'
             X-RateLimit-Reset:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Reset
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Reset'
         '429':
-          $ref: ../common/models/responses.v1.yaml#/429TooManyRequests
+          $ref: '../common/models/responses.v1.yaml#/429TooManyRequests'
         '503':
-          $ref: ../common/models/responses.v1.yaml#/503ServiceUnavailable
-        'default':
-          $ref: ../common/models/responses.v1.yaml#/default
+          $ref: '../common/models/responses.v1.yaml#/503ServiceUnavailable'
+        default:
+          $ref: '../common/models/responses.v1.yaml#/default'
 
   '/events/{id}':
     parameters:
@@ -151,23 +151,23 @@ paths:
           description: OK
           headers:
             X-RateLimit-Limit:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Limit
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Limit'
             X-RateLimit-Remaining:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Remaining
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Remaining'
             X-RateLimit-Reset:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Reset
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Reset'
           content:
             application/json:
               schema:
                 $ref: ./models/event.v1.json
         '404':
-          $ref: ../common/models/responses.v1.yaml#/404NotFound
+          $ref: '../common/models/responses.v1.yaml#/404NotFound'
         '429':
-          $ref: ../common/models/responses.v1.yaml#/429TooManyRequests
+          $ref: '../common/models/responses.v1.yaml#/429TooManyRequests'
         '503':
-          $ref: ../common/models/responses.v1.yaml#/503ServiceUnavailable
-        'default':
-          $ref: ../common/models/responses.v1.yaml#/default
+          $ref: '../common/models/responses.v1.yaml#/503ServiceUnavailable'
+        default:
+          $ref: '../common/models/responses.v1.yaml#/default'
     delete:
       summary: Delete event by id
       description: Delete event by id
@@ -179,19 +179,19 @@ paths:
           description: No Content
           headers:
             X-RateLimit-Limit:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Limit
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Limit'
             X-RateLimit-Remaining:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Remaining
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Remaining'
             X-RateLimit-Reset:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Reset
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Reset'
         '404':
-          $ref: ../common/models/responses.v1.yaml#/404NotFound
+          $ref: '../common/models/responses.v1.yaml#/404NotFound'
         '429':
-          $ref: ../common/models/responses.v1.yaml#/429TooManyRequests
+          $ref: '../common/models/responses.v1.yaml#/429TooManyRequests'
         '503':
-          $ref: ../common/models/responses.v1.yaml#/503ServiceUnavailable
-        'default':
-          $ref: ../common/models/responses.v1.yaml#/default
+          $ref: '../common/models/responses.v1.yaml#/503ServiceUnavailable'
+        default:
+          $ref: '../common/models/responses.v1.yaml#/default'
     put:
       summary: Update event
       description: Update event
@@ -203,23 +203,23 @@ paths:
           description: OK
           headers:
             X-RateLimit-Limit:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Limit
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Limit'
             X-RateLimit-Remaining:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Remaining
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Remaining'
             X-RateLimit-Reset:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Reset
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Reset'
           content:
             application/json:
               schema:
                 $ref: ./models/event.v1.json
         '404':
-          $ref: ../common/models/responses.v1.yaml#/404NotFound
+          $ref: '../common/models/responses.v1.yaml#/404NotFound'
         '429':
-          $ref: ../common/models/responses.v1.yaml#/429TooManyRequests
+          $ref: '../common/models/responses.v1.yaml#/429TooManyRequests'
         '503':
-          $ref: ../common/models/responses.v1.yaml#/503ServiceUnavailable
-        'default':
-          $ref: ../common/models/responses.v1.yaml#/default
+          $ref: '../common/models/responses.v1.yaml#/503ServiceUnavailable'
+        default:
+          $ref: '../common/models/responses.v1.yaml#/default'
       requestBody:
         content:
           application/json:
@@ -229,31 +229,31 @@ paths:
   '/events/{id}/sessions':
     parameters:
       - name: id
+        description: Event id
         in: path
         required: true
         schema:
           type: string
-        description: Event id
     get:
       summary: Get all sessions for a particular event
       description: Get all sessions for a particular event
       operationId: getSessionsByEventId
-      tags: 
+      tags:
         - Session
       parameters:
-        - $ref: ../common/models/parameters.v1.yaml#/sort
-        - $ref: ../common/models/parameters.v1.yaml#/query
-        - $ref: ../common/models/parameters.v1.yaml#/fields
+        - $ref: '../common/models/parameters.v1.yaml#/sort'
+        - $ref: '../common/models/parameters.v1.yaml#/query'
+        - $ref: '../common/models/parameters.v1.yaml#/fields'
       responses:
         '200':
           description: OK
           headers:
             X-RateLimit-Limit:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Limit
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Limit'
             X-RateLimit-Remaining:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Remaining
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Remaining'
             X-RateLimit-Reset:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Reset
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Reset'
           content:
             application/json:
               schema:
@@ -261,13 +261,13 @@ paths:
                 items:
                   $ref: ./models/session.v1.json
         '404':
-          $ref: ../common/models/responses.v1.yaml#/404NotFound
+          $ref: '../common/models/responses.v1.yaml#/404NotFound'
         '429':
-          $ref: ../common/models/responses.v1.yaml#/429TooManyRequests
+          $ref: '../common/models/responses.v1.yaml#/429TooManyRequests'
         '503':
-          $ref: ../common/models/responses.v1.yaml#/503ServiceUnavailable
-        'default':
-          $ref: ../common/models/responses.v1.yaml#/default
+          $ref: '../common/models/responses.v1.yaml#/503ServiceUnavailable'
+        default:
+          $ref: '../common/models/responses.v1.yaml#/default'
     delete:
       summary: Delete all sessions for a particular event
       description: Delete all sessions for a particular event
@@ -279,19 +279,19 @@ paths:
           description: No Content
           headers:
             X-RateLimit-Limit:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Limit
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Limit'
             X-RateLimit-Remaining:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Remaining
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Remaining'
             X-RateLimit-Reset:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Reset
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Reset'
         '404':
-          $ref: ../common/models/responses.v1.yaml#/404NotFound
+          $ref: '../common/models/responses.v1.yaml#/404NotFound'
         '429':
-          $ref: ../common/models/responses.v1.yaml#/429TooManyRequests
+          $ref: '../common/models/responses.v1.yaml#/429TooManyRequests'
         '503':
-          $ref: ../common/models/responses.v1.yaml#/503ServiceUnavailable
-        'default':
-          $ref: ../common/models/responses.v1.yaml#/default
+          $ref: '../common/models/responses.v1.yaml#/503ServiceUnavailable'
+        default:
+          $ref: '../common/models/responses.v1.yaml#/default'
     post:
       summary: Create a session for a particular event
       description: Create a session for a particular event
@@ -303,23 +303,23 @@ paths:
           description: OK
           headers:
             X-RateLimit-Limit:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Limit
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Limit'
             X-RateLimit-Remaining:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Remaining
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Remaining'
             X-RateLimit-Reset:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Reset
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Reset'
           content:
             application/json:
               schema:
                 $ref: ./models/id.v1.json
         '404':
-          $ref: ../common/models/responses.v1.yaml#/404NotFound
+          $ref: '../common/models/responses.v1.yaml#/404NotFound'
         '429':
-          $ref: ../common/models/responses.v1.yaml#/429TooManyRequests
+          $ref: '../common/models/responses.v1.yaml#/429TooManyRequests'
         '503':
-          $ref: ../common/models/responses.v1.yaml#/503ServiceUnavailable
-        'default':
-          $ref: ../common/models/responses.v1.yaml#/default
+          $ref: '../common/models/responses.v1.yaml#/503ServiceUnavailable'
+        default:
+          $ref: '../common/models/responses.v1.yaml#/default'
       requestBody:
         content:
           application/json:
@@ -345,23 +345,23 @@ paths:
           description: OK
           headers:
             X-RateLimit-Limit:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Limit
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Limit'
             X-RateLimit-Remaining:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Remaining
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Remaining'
             X-RateLimit-Reset:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Reset
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Reset'
           content:
             application/json:
               schema:
                 $ref: ./models/session.v1.json
         '404':
-          $ref: ../common/models/responses.v1.yaml#/404NotFound
+          $ref: '../common/models/responses.v1.yaml#/404NotFound'
         '429':
-          $ref: ../common/models/responses.v1.yaml#/429TooManyRequests
+          $ref: '../common/models/responses.v1.yaml#/429TooManyRequests'
         '503':
-          $ref: ../common/models/responses.v1.yaml#/503ServiceUnavailable
-        'default':
-          $ref: ../common/models/responses.v1.yaml#/default
+          $ref: '../common/models/responses.v1.yaml#/503ServiceUnavailable'
+        default:
+          $ref: '../common/models/responses.v1.yaml#/default'
     put:
       summary: Update a session
       description: Update a session
@@ -373,23 +373,23 @@ paths:
           description: OK
           headers:
             X-RateLimit-Limit:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Limit
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Limit'
             X-RateLimit-Remaining:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Remaining
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Remaining'
             X-RateLimit-Reset:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Reset
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Reset'
           content:
             application/json:
               schema:
                 $ref: ./models/session.v1.json
         '404':
-          $ref: ../common/models/responses.v1.yaml#/404NotFound
+          $ref: '../common/models/responses.v1.yaml#/404NotFound'
         '429':
-          $ref: ../common/models/responses.v1.yaml#/429TooManyRequests
+          $ref: '../common/models/responses.v1.yaml#/429TooManyRequests'
         '503':
-          $ref: ../common/models/responses.v1.yaml#/503ServiceUnavailable
-        'default':
-          $ref: ../common/models/responses.v1.yaml#/default
+          $ref: '../common/models/responses.v1.yaml#/503ServiceUnavailable'
+        default:
+          $ref: '../common/models/responses.v1.yaml#/default'
       requestBody:
         content:
           application/json:
@@ -406,16 +406,72 @@ paths:
           description: No Content
           headers:
             X-RateLimit-Limit:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Limit
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Limit'
             X-RateLimit-Remaining:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Remaining
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Remaining'
             X-RateLimit-Reset:
-              $ref: ../common/models/headers.v1.yaml#/X-RateLimit-Reset
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Reset'
         '404':
-          $ref: ../common/models/responses.v1.yaml#/404NotFound
+          $ref: '../common/models/responses.v1.yaml#/404NotFound'
         '429':
-          $ref: ../common/models/responses.v1.yaml#/429TooManyRequests
+          $ref: '../common/models/responses.v1.yaml#/429TooManyRequests'
         '503':
-          $ref: ../common/models/responses.v1.yaml#/503ServiceUnavailable
-        'default':
-          $ref: ../common/models/responses.v1.yaml#/default
+          $ref: '../common/models/responses.v1.yaml#/503ServiceUnavailable'
+        default:
+          $ref: '../common/models/responses.v1.yaml#/default'
+
+  '/events/sessions/{id}/vote':
+    parameters:
+      - type: string
+        name: id
+        description: Session id
+        in: path
+        required: true
+    post:
+      summary: Upvote session
+      description: Upvote session
+      operationId: upvoteSession
+      tags:
+        - Session
+      responses:
+        '204':
+          description: No Content
+          headers:
+            X-RateLimit-Limit:
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Reset'
+        '404':
+          $ref: '../common/models/responses.v1.yaml#/404NotFound'
+        '429':
+          $ref: '../common/models/responses.v1.yaml#/429TooManyRequests'
+        '503':
+          $ref: '../common/models/responses.v1.yaml#/503ServiceUnavailable'
+        default:
+          $ref: '../common/models/responses.v1.yaml#/default'
+    delete:
+      summary: Downvote session
+      description: Downvote session
+      operationId: downvoteSession
+      tags:
+        - Session
+      responses:
+        '204':
+          description: No Content
+          headers:
+            X-RateLimit-Limit:
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: '../common/models/headers.v1.yaml#/X-RateLimit-Reset'
+        '404':
+          $ref: '../common/models/responses.v1.yaml#/404NotFound'
+        '429':
+          $ref: '../common/models/responses.v1.yaml#/429TooManyRequests'
+        '503':
+          $ref: '../common/models/responses.v1.yaml#/503ServiceUnavailable'
+        default:
+          $ref: '../common/models/responses.v1.yaml#/default'

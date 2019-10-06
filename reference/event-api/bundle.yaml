@@ -121,7 +121,7 @@ paths:
                 $ref: '#/components/schemas/EventPage'
         429:
           description: >
-            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+            Too Many Requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
           content:
             application/json:
               schema:
@@ -190,7 +190,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         429:
           description: >
-            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+            Too Many Requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
           content:
             application/json:
               schema:
@@ -236,7 +236,7 @@ paths:
                     type: string
         429:
           description: >
-            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+            Too Many Requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
           content:
             application/json:
               schema:
@@ -301,7 +301,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         429:
           description: >
-            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+            Too Many Requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
           content:
             application/json:
               schema:
@@ -361,7 +361,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         429:
           description: >
-            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+            Too Many Requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
           content:
             application/json:
               schema:
@@ -432,7 +432,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         429:
           description: >
-            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+            Too Many Requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
           content:
             application/json:
               schema:
@@ -524,7 +524,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         429:
           description: >
-            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+            Too Many Requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
           content:
             application/json:
               schema:
@@ -584,7 +584,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         429:
           description: >
-            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+            Too Many Requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
           content:
             application/json:
               schema:
@@ -655,7 +655,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         429:
           description: >
-            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+            Too Many Requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
           content:
             application/json:
               schema:
@@ -720,7 +720,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         429:
           description: >
-            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+            Too Many Requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
           content:
             application/json:
               schema:
@@ -791,7 +791,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         429:
           description: >
-            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+            Too Many Requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
           content:
             application/json:
               schema:
@@ -851,7 +851,128 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         429:
           description: >
-            Too many requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+            Too Many Requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        503:
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      deprecated: false
+  /events/sessions/{id}/vote:
+    post:
+      tags:
+      - Session
+      summary: upvoteSession
+      description: Upvote session
+      operationId: UpvoteSession
+      parameters:
+      - name: id
+        in: path
+        description: Session id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        204:
+          description: No Content
+          headers:
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Reset:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        429:
+          description: >
+            Too Many Requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        503:
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      deprecated: false
+    delete:
+      tags:
+      - Session
+      summary: downvoteSession
+      description: Downvote session
+      operationId: DownvoteSession
+      parameters:
+      - name: id
+        in: path
+        description: Session id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        204:
+          description: No Content
+          headers:
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+            X-RateLimit-Reset:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        429:
+          description: >
+            Too Many Requests. See https://en.wikipedia.org/wiki/Exponential_backoff.
           content:
             application/json:
               schema:
@@ -1072,7 +1193,7 @@ components:
         address: 1057 DT
         city: London
         country: England
-        id: e7482d2d-17ec-41ce-80ff-79a6bc063708
+        id: a7930eb2-192d-44ab-b6b5-43920960e0a5
     Session:
       title: Session
       required:
@@ -1274,7 +1395,7 @@ components:
           presenter: Peter Bacon Darwin
           duration: 01:00
           level: BEGINNER
-        id: f7b18078-e208-4c37-8441-3024f430a309
+        id: 42141754-0b46-43b1-8d58-c44f3e8e5e89
     CreateSession:
       title: CreateSession
       required:
@@ -1311,7 +1432,7 @@ components:
         presenter: Peter Bacon Darwin
         duration: 01:00
         level: BEGINNER
-        id: 950b46ec-6186-4103-bb3a-aa7cf5ffb86e
+        id: 603cc7fc-569a-4812-a5f0-8b40993dd49b
     Id:
       title: Id
       required:
