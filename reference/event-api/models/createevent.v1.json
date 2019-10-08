@@ -6,7 +6,7 @@
   "properties": {
     "sessions": {
       "type": "array",
-      "description": "Event sessions address",
+      "description": "Event sessions",
       "uniqueItems": true,
       "items": {
         "$ref": "./createsession.v1.json"
@@ -22,10 +22,10 @@
     },
     "price": {
       "type": "number",
-      "default": 0,
       "description": "Event price",
       "format": "double",
-      "maximum": 999.99
+      "maximum": 999.99,
+      "default": 0
     },
     "startDate": {
       "type": "string",

@@ -6,7 +6,7 @@
   "properties": {
     "version": {
       "type": "integer",
-      "description": "The version of this event object.",
+      "description": "The version of this object.",
       "default": 0,
       "format": "int32",
       "minimum": 0,
@@ -28,7 +28,8 @@
     },
     "description": {
       "type": "string",
-      "maxLength": 5000
+      "description": "Session description should be 500 words max.",
+      "maxLength": 500
     },
     "level": {
       "type": "string",

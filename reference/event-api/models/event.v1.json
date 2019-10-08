@@ -6,7 +6,7 @@
   "properties": {
     "version": {
       "type": "integer",
-      "description": "The version of this event object.",
+      "description": "The version of this object.",
       "default": 0,
       "format": "int32",
       "minimum": 0,
@@ -32,7 +32,8 @@
       "type": "number",
       "description": "Event price",
       "format": "double",
-      "maximum": 999.99
+      "maximum": 999.99,
+      "default": 0
     },
     "imageUrl": {
       "type": "string",

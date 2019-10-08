@@ -6,7 +6,7 @@
   "properties": {
     "version": {
       "type": "integer",
-      "description": "The version of this event object.",
+      "description": "The version of this object.",
       "default": 0,
       "format": "int32",
       "minimum": 0,
