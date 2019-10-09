@@ -4,8 +4,8 @@
   "name": "Angular Connect",
   "startDate": "2036-09-26T10:00:00Z",
   "price": 599.99,
-  "imageUrl": "https://github.com/jmcooper/ng2-fundamentals/blob/master/app/assets/images/angularconnect-shield.png",
-  "onlineUrl": "https://github.com/jmcooper/ng2-fundamentals/blob/master/app/assets/images/angularconnect-shield.png",
+  "imageUrl": "https://raw.githubusercontent.com/jmcooper/ng2-fundamentals/master/app/assets/images/angularconnect-shield.png",
+  "onlineUrl": "https://raw.githubusercontent.com/jmcooper/ng2-fundamentals/master/app/assets/images/angularconnect-shield.png",
   "location": {
     "version": 1,
     "address": "1057 DT",
