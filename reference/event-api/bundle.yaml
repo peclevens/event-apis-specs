@@ -1068,7 +1068,7 @@ components:
           maximum: 2147483647
           minimum: 0
           type: integer
-          description: The version of this event object.
+          description: The version of this object.
           format: int32
           example: 0
         id:
@@ -1088,10 +1088,15 @@ components:
           maximum: 999.99000000000001
           type: number
           description: Event price
+          example: 0
         imageUrl:
           maxLength: 2048
           type: string
           description: Event URL picture
+        onlineUrl:
+          maxLength: 2048
+          type: string
+          description: Event online URL
         location:
           $ref: '#/components/schemas/Location'
         sessions:
@@ -1107,7 +1112,8 @@ components:
         name: Angular Connect
         startDate: 2036-09-26T10:00:00Z
         price: 599.99000000000001
-        imageUrl: /assets/images/angularconnect-shield.png
+        imageUrl: https://raw.githubusercontent.com/jmcooper/ng2-fundamentals/master/app/assets/images/angularconnect-shield.png
+        onlineUrl: https://raw.githubusercontent.com/jmcooper/ng2-fundamentals/master/app/assets/images/angularconnect-shield.png
         location:
           version: 1
           address: 1057 DT
@@ -1175,7 +1181,7 @@ components:
           maximum: 2147483647
           minimum: 0
           type: integer
-          description: The version of this event object.
+          description: The version of this object.
           format: int32
           example: 0
         address:
@@ -1193,7 +1199,7 @@ components:
         address: 1057 DT
         city: London
         country: England
-        id: a7930eb2-192d-44ab-b6b5-43920960e0a5
+        id: beb84f4c-0bee-46f1-8c4a-5d1cd93986ef
     Session:
       title: Session
       required:
@@ -1208,7 +1214,7 @@ components:
           maximum: 2147483647
           minimum: 0
           type: integer
-          description: The version of this event object.
+          description: The version of this object.
           format: int32
           example: 0
         id:
@@ -1224,8 +1230,9 @@ components:
             type: string
           description: ''
         description:
-          maxLength: 5000
+          maxLength: 500
           type: string
+          description: Session description should be 500 words max.
         level:
           $ref: '#/components/schemas/Level'
         duration:
@@ -1358,13 +1365,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CreateSession'
-          description: Event sessions address
+          description: Event sessions
         location:
           $ref: '#/components/schemas/Location'
         imageUrl:
           maxLength: 2048
           type: string
           description: Event URL picture
+        onlineUrl:
+          maxLength: 2048
+          type: string
+          description: Event online URL
         price:
           maximum: 999.99000000000001
           type: number
@@ -1384,7 +1395,8 @@ components:
         name: Angular Connect
         startDate: 2036-09-26T10:00:00Z
         price: 599.99000000000001
-        imageUrl: /assets/images/angularconnect-shield.png
+        imageUrl: https://raw.githubusercontent.com/jmcooper/ng2-fundamentals/master/app/assets/images/angularconnect-shield.png
+        onlineUrl: https://raw.githubusercontent.com/jmcooper/ng2-fundamentals/master/app/assets/images/angularconnect-shield.png
         location:
           address: 1057 DT
           city: London
@@ -1395,7 +1407,7 @@ components:
           presenter: Peter Bacon Darwin
           duration: 01:00
           level: BEGINNER
-        id: 42141754-0b46-43b1-8d58-c44f3e8e5e89
+        id: 4e7b9c8d-a9c8-4f11-9b7e-9119730750f8
     CreateSession:
       title: CreateSession
       required:
@@ -1406,8 +1418,9 @@ components:
       type: object
       properties:
         description:
-          maxLength: 5000
+          maxLength: 500
           type: string
+          description: Session description should be 500 words max.
         level:
           $ref: '#/components/schemas/Level'
         duration:
@@ -1432,7 +1445,7 @@ components:
         presenter: Peter Bacon Darwin
         duration: 01:00
         level: BEGINNER
-        id: 603cc7fc-569a-4812-a5f0-8b40993dd49b
+        id: bd899be5-7da3-459c-b4c8-55dedf654cbb
     Id:
       title: Id
       required:
