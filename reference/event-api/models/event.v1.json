@@ -40,6 +40,11 @@
       "maxLength": 2048,
       "description": "Event URL picture"
     },
+    "onlineUrl": {
+      "type": "string",
+      "maxLength": 2048,
+      "description": "Event online URL"
+    },
     "location": {
       "$ref": "./location.v1.json"
     },
@@ -64,7 +69,7 @@
   "anyOf": [
     {
       "required": [
-        "imageUrl"
+        "onlineUrl"
       ]
     },
     {
