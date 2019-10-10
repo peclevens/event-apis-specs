@@ -112,7 +112,7 @@ paths:
     delete:
       summary: Delete all events
       description: Delete all events
-      operationId: deleteAllEvent
+      operationId: deleteAllEvents
       tags:
         - Event
       responses:
@@ -195,7 +195,7 @@ paths:
     put:
       summary: Update event
       description: Update event
-      operationId: updateEventById
+      operationId: updateEvent
       tags:
         - Event
       responses:
@@ -365,7 +365,7 @@ paths:
     put:
       summary: Update a session
       description: Update a session
-      operationId: updateSessionById
+      operationId: updateSession
       tags:
         - Session
       responses:
@@ -430,7 +430,7 @@ paths:
     post:
       summary: Upvote session
       description: Upvote session
-      operationId: upvoteSession
+      operationId: upVoteSession
       tags:
         - Session
       responses:
@@ -454,7 +454,7 @@ paths:
     delete:
       summary: Downvote session
       description: Downvote session
-      operationId: downvoteSession
+      operationId: downVoteSession
       tags:
         - Session
       responses:
