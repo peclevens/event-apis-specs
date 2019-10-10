@@ -211,9 +211,9 @@ paths:
     delete:
       tags:
       - Event
-      summary: deleteAllEvent
+      summary: deleteAllEvents
       description: Delete all events
-      operationId: DeleteAllEvent
+      operationId: DeleteAllEvents
       parameters: []
       responses:
         204:
@@ -382,9 +382,9 @@ paths:
     put:
       tags:
       - Event
-      summary: updateEventById
+      summary: updateEvent
       description: Update event
-      operationId: UpdateEventById
+      operationId: UpdateEvent
       parameters:
       - name: id
         in: path
@@ -741,9 +741,9 @@ paths:
     put:
       tags:
       - Session
-      summary: updateSessionById
+      summary: updateSession
       description: Update a session
-      operationId: UpdateSessionById
+      operationId: UpdateSession
       parameters:
       - name: id
         in: path
@@ -873,9 +873,9 @@ paths:
     post:
       tags:
       - Session
-      summary: upvoteSession
+      summary: upVoteSession
       description: Upvote session
-      operationId: UpvoteSession
+      operationId: UpVoteSession
       parameters:
       - name: id
         in: path
@@ -933,9 +933,9 @@ paths:
     delete:
       tags:
       - Session
-      summary: downvoteSession
+      summary: downVoteSession
       description: Downvote session
-      operationId: DownvoteSession
+      operationId: DownVoteSession
       parameters:
       - name: id
         in: path
@@ -1199,7 +1199,7 @@ components:
         address: 1057 DT
         city: London
         country: England
-        id: beb84f4c-0bee-46f1-8c4a-5d1cd93986ef
+        id: c02b6ee1-695f-4688-998d-e00bc89f2915
     Session:
       title: Session
       required:
@@ -1407,7 +1407,7 @@ components:
           presenter: Peter Bacon Darwin
           duration: 01:00
           level: BEGINNER
-        id: 4e7b9c8d-a9c8-4f11-9b7e-9119730750f8
+        id: bac6e3a6-75c1-4414-97a9-c104c1de990a
     CreateSession:
       title: CreateSession
       required:
@@ -1445,7 +1445,7 @@ components:
         presenter: Peter Bacon Darwin
         duration: 01:00
         level: BEGINNER
-        id: bd899be5-7da3-459c-b4c8-55dedf654cbb
+        id: b780ba40-6900-4546-9a09-c58bbf97e2d4
     Id:
       title: Id
       required:
