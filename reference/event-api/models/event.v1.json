@@ -10,7 +10,6 @@
       "default": 0,
       "format": "int32",
       "minimum": 0,
-      "maximum": 2147483647
     },
     "id": {
       "type": "string",
