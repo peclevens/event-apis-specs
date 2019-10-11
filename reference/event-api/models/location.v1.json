@@ -9,8 +9,7 @@
       "description": "The version of this object.",
       "default": 0,
       "format": "int32",
-      "minimum": 0,
-      "maximum": 2147483647
+      "minimum": 0
     },
     "address": {
       "type": "string",
