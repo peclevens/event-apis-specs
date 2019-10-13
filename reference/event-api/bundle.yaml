@@ -267,7 +267,6 @@ paths:
         description: Event id
         required: true
         style: simple
-        explode: false
         schema:
           type: string
       responses:
@@ -331,7 +330,6 @@ paths:
         description: Event id
         required: true
         style: simple
-        explode: false
         schema:
           type: string
       responses:
@@ -391,7 +389,6 @@ paths:
         description: Event id
         required: true
         style: simple
-        explode: false
         schema:
           type: string
       requestBody:
@@ -463,7 +460,6 @@ paths:
         description: Event id
         required: true
         style: simple
-        explode: false
         schema:
           type: string
       - name: sort
@@ -554,7 +550,6 @@ paths:
         description: Event id
         required: true
         style: simple
-        explode: false
         schema:
           type: string
       responses:
@@ -614,7 +609,6 @@ paths:
         description: Event id
         required: true
         style: simple
-        explode: false
         schema:
           type: string
       requestBody:
@@ -686,7 +680,6 @@ paths:
         description: Session id
         required: true
         style: simple
-        explode: false
         schema:
           type: string
       responses:
@@ -750,7 +743,6 @@ paths:
         description: Session id
         required: true
         style: simple
-        explode: false
         schema:
           type: string
       requestBody:
@@ -821,7 +813,6 @@ paths:
         description: Session id
         required: true
         style: simple
-        explode: false
         schema:
           type: string
       responses:
@@ -882,7 +873,6 @@ paths:
         description: Session id
         required: true
         style: simple
-        explode: false
         schema:
           type: string
       responses:
@@ -942,7 +932,6 @@ paths:
         description: Session id
         required: true
         style: simple
-        explode: false
         schema:
           type: string
       responses:
@@ -1065,7 +1054,6 @@ components:
       type: object
       properties:
         version:
-          maximum: 2147483647
           minimum: 0
           type: integer
           description: The version of this object.
@@ -1178,7 +1166,6 @@ components:
       type: object
       properties:
         version:
-          maximum: 2147483647
           minimum: 0
           type: integer
           description: The version of this object.
@@ -1199,7 +1186,7 @@ components:
         address: 1057 DT
         city: London
         country: England
-        id: c02b6ee1-695f-4688-998d-e00bc89f2915
+        id: 0ca693b8-8556-45bd-a3f3-c03741becca3
     Session:
       title: Session
       required:
@@ -1211,7 +1198,6 @@ components:
       type: object
       properties:
         version:
-          maximum: 2147483647
           minimum: 0
           type: integer
           description: The version of this object.
@@ -1407,7 +1393,7 @@ components:
           presenter: Peter Bacon Darwin
           duration: 01:00
           level: BEGINNER
-        id: bac6e3a6-75c1-4414-97a9-c104c1de990a
+        id: 6902b1cd-82fe-4903-afe0-3b29bdfe854e
     CreateSession:
       title: CreateSession
       required:
@@ -1445,7 +1431,7 @@ components:
         presenter: Peter Bacon Darwin
         duration: 01:00
         level: BEGINNER
-        id: b780ba40-6900-4546-9a09-c58bbf97e2d4
+        id: d970c47c-3870-47e4-b51b-d45dff5fd969
     Id:
       title: Id
       required:
