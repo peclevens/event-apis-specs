@@ -39,6 +39,11 @@ make release
 
 # Clean
 make clean
+
+# Optionally you can customize the build by providing environment variables as follow.
+make build -e CONTAINER_NAME=docs VERSION=1.0
+make release -e CONTAINER_NAME=docs -e PORT=8080 VERSION=1.0
+make clean -e CONTAINER_NAME=docs VERSION=1.0
 ```
 
 ## API List Documentations
