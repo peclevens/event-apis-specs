@@ -26,6 +26,21 @@ After successful execution of the command, please enter the following address in
 [http://localhost:8082](http://localhost:8082)
 
 
+## Manage with GNU Make
+
+Before you can manage the project with the `make` tool, please make sure it is installed in your system.
+
+```bash
+# Build
+make build
+
+# Release 
+make release
+
+# Clean
+make clean
+```
+
 ## API List Documentations
 
 Click any link to visit its API specification.
