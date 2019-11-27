@@ -9,24 +9,20 @@ The sample application will allow its users to retrieve, create, edit and delete
 
 To run the APIs documentations portal, the following tools are required:
 
-1. Docker installed and configured.
+1. Docker installed, configured and running.
 
 
 ## Getting Started
 
 To run the APIs documentations portal, please run the following command to build a docker image, create and run a docker container name `docs`.
 
+#### 1. with bare Docker commands
 ```bash
 docker build -t event-apis-docs:1.0.0 . && \
 	docker run --name event-apis-docs -p 8082:8080 -d event-apis-docs:1.0.0
 ```
 
-After successful execution of the command, please enter the following address in your browser to see the APIs documentations portal.
-
-[http://localhost:8082](http://localhost:8082)
-
-
-## Manage with GNU Make
+#### 2. with GNU Make
 
 Before you can manage the project with the `make` tool, please make sure it is installed in your system.
 
@@ -45,6 +41,10 @@ make build -e CONTAINER_NAME=docs VERSION=1.0
 make release -e CONTAINER_NAME=docs -e PORT=8080 VERSION=1.0
 make clean -e CONTAINER_NAME=docs VERSION=1.0
 ```
+
+After successful execution of the command, please enter the following address in your browser to see the APIs documentations portal.
+
+[http://localhost:8082](http://localhost:8082)
 
 ## API List Documentations
 
